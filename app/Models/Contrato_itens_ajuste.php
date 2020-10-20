@@ -1,0 +1,105 @@
+<?php
+
+namespace App\Models;
+
+use Eloquent as Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Activitylog\Traits\LogsActivity;
+
+/**
+ * Class Contrato_itens_ajuste
+ * @package App\Models
+ * @version May 24, 2020, 8:59 am UTC
+ *
+ * @property string data_inicio
+ * @property string ajuste
+ * @property string|\Carbon\Carbon incluidodoem
+ * @property string id_contrato
+ * @property string id_cidade
+ * @property integer id_usuario
+ */
+class Contrato_itens_ajuste extends Model
+{
+    use SoftDeletes;
+    use LogsActivity;
+
+    public $table = 'contrato_itens_ajustes';
+
+    const CREATED_AT = 'created_at';
+    const UPDATED_AT = 'updated_at';
+
+
+    protected $dates = ['deleted_at'];
+
+
+    protected static $logAttributes = ['*'];
+
+
+
+    public $fillable = [
+        'data_inicio',
+        'ajuste',
+        'incluidodoem',
+        'id_contrato',
+        'id_cidade',
+        'id_usuario'
+    ];
+
+    /**
+     * The attributes that should be casted to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'id' => 'integer',
+        'data_inicio' => 'date',
+        'ajuste' => 'string',
+        'incluidodoem' => 'datetime',
+        'id_contrato' => 'string',
+        'id_cidade' => 'string',
+        'id_usuario' => 'integer'
+    ];
+
+    /**
+     * Validation rules
+     *
+     * @var array
+     */
+    public static $rules = [
+        'data_inicio' => 'required',
+        'ajuste' => 'required',
+        'incluidodoem' => 'required',
+        'id_contrato' => 'required',
+        'id_cidade' => 'required',
+        'id_usuario' => 'required'
+    ];
+
+    public function usuario(): BelongsTo
+    {
+        return $this->belongsTo(usuario::class, 'id_usuario');
+    }
+    public function cidade(): BelongsTo
+    {
+        return $this->belongsTo(cidade::class, 'id_cidade');
+    }
+    public function contrato(): BelongsTo
+    {
+        return $this->belongsTo(Contratos::class, 'id_contrato');
+    }
+    public  function relationsName(){
+        $reflector = new \ReflectionClass($this);
+        $relations = [];
+        foreach ($reflector->getMethods() as $reflectionMethod) {
+            $returnType = $reflectionMethod->getReturnType();
+            if ($returnType) {
+                if (in_array(class_basename($returnType->getName()), ['HasOne', 'HasMany', 'BelongsTo', 'BelongsToMany', 'MorphToMany', 'MorphTo'])) {
+                    $relations[] = $reflectionMethod->name;
+                }
+            }
+        }
+
+        return $relations;
+    }
+
+}

@@ -1,0 +1,470 @@
+<div id="passo-1" style="display: block">
+        <div class="form-group col-sm-12">
+        <h3>Passo 1 de 4</h3>
+    </div>
+    <!-- Idcidade Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('idcidade', __('models/iluminacaoPublicas.fields.idcidade').':') !!}
+        {!! Form::select('idcidade', \App\Models\cidade::orderBy('descricao')->pluck('descricao', 'id'), null, ['class' => 'form-control']) !!}
+    </div>
+
+
+    <!-- Idra Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('idra', __('models/iluminacaoPublicas.fields.idra').':') !!}
+        {!! Form::select('idra', \App\Models\ra::orderBy('ra_descricao')->pluck('ra_descricao', 'id'), null, ['class' => 'form-control']) !!}
+    </div>
+
+
+    <!-- Idbairro Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('idbairro', __('models/iluminacaoPublicas.fields.idbairro').':') !!}
+        {!! Form::select('idbairro', \App\Models\Bairros::orderBy('bairro_descricao')->pluck('bairro_descricao', 'id'), null, ['class' => 'form-control']) !!}
+    </div>
+
+
+    <!-- Idlogradouro Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('idlogradouro', __('models/iluminacaoPublicas.fields.idlogradouro').':') !!}
+        {!! Form::select('idlogradouro', \App\Models\logradouro::orderBy('logradouro_descricao')->pluck('logradouro_descricao', 'id'), null, ['class' => 'form-control']) !!}
+    </div>
+
+
+    <!-- Idposte Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('idposte', __('models/iluminacaoPublicas.fields.idposte').':') !!}
+        {!! Form::select('idposte', \App\Models\poste::orderBy('poste_descricao')->pluck('poste_descricao', 'id'), null, ['class' => 'form-control']) !!}
+    </div>
+
+
+    <!-- Poste Numero Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('poste_numero', __('models/iluminacaoPublicas.fields.poste_numero').':') !!}
+        {!! Form::text('poste_numero', null, ['class' => 'form-control']) !!}
+    </div>
+
+
+    <!-- Coordenada X Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('coordenada_x', __('models/iluminacaoPublicas.fields.coordenada_x').':') !!}
+        {!! Form::number('coordenada_x', null, ['class' => 'form-control']) !!}
+    </div>
+
+
+    <!-- Coordenada Y Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('coordenada_y', __('models/iluminacaoPublicas.fields.coordenada_y').':') !!}
+        {!! Form::number('coordenada_y', null, ['class' => 'form-control']) !!}
+    </div>
+
+
+    <!-- Visavis Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('visavis', __('models/iluminacaoPublicas.fields.visavis').':') !!}
+        {!! Form::number('visavis', null, ['class' => 'form-control']) !!}
+    </div>
+
+
+    <!-- Referencia Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('referencia', __('models/iluminacaoPublicas.fields.referencia').':') !!}
+        {!! Form::text('referencia', null, ['class' => 'form-control']) !!}
+    </div>
+
+
+    <!-- Poste Propriedade Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('poste_propriedade', __('models/iluminacaoPublicas.fields.poste_propriedade').':') !!}
+        {!! Form::text('poste_propriedade', null, ['class' => 'form-control']) !!}
+    </div>
+
+
+    <!-- Poste Status Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('poste_status', __('models/iluminacaoPublicas.fields.poste_status').':') !!}
+        {!! Form::text('poste_status', null, ['class' => 'form-control']) !!}
+    </div>
+
+
+    <div class="form-group col-sm-12">
+
+        <div style="float: right">
+            <a class="btn btn-primary" onclick="$('#passo-1').css('display', 'none'); $('#passo-2').css('display', 'block')">Próximo <i class="fa fa-arrow-right"></i></a>
+        </div>
+
+    </div>
+</div>
+
+<div id="passo-2" style="display: none">
+        <div class="form-group col-sm-12">
+        <h3>Passo 2 de 4</h3>
+    </div>
+
+    <!-- Poste Data Instalacao Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('poste_data_instalacao', __('models/iluminacaoPublicas.fields.poste_data_instalacao').':') !!}
+        {!! Form::date('poste_data_instalacao', null, ['class' => 'form-control','id'=>'poste_data_instalacao']) !!}
+    </div>
+    @push('scripts')
+        <script type="text/javascript">
+            $('#poste_data_instalacao').datetimepicker({
+                format: 'YYYY-MM-DD HH:mm:ss',
+                useCurrent: false
+            })
+        </script>
+    @endpush
+
+    <!-- Idsuporte Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('idsuporte', __('models/iluminacaoPublicas.fields.idsuporte').':') !!}
+        {!! Form::select('idsuporte', \App\Models\suporte::orderBy('suporte_descricao')->pluck('suporte_descricao', 'id'), null, ['class' => 'form-control']) !!}
+    </div>
+
+
+    <!-- Suporte Data Instalacao Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('suporte_data_instalacao', __('models/iluminacaoPublicas.fields.suporte_data_instalacao').':') !!}
+        {!! Form::date('suporte_data_instalacao', null, ['class' => 'form-control','id'=>'suporte_data_instalacao']) !!}
+    </div>
+
+    @push('scripts')
+        <script type="text/javascript">
+            $('#suporte_data_instalacao').datetimepicker({
+                format: 'YYYY-MM-DD HH:mm:ss',
+                useCurrent: false
+            })
+        </script>
+    @endpush
+
+
+<!-- Idluminaria Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('idluminaria', __('models/iluminacaoPublicas.fields.idluminaria').':') !!}
+        {!! Form::select('idluminaria', \App\Models\luminaria::orderBy('luminaria_descricao')->pluck('luminaria_descricao', 'id'), null, ['class' => 'form-control']) !!}
+    </div>
+
+
+    <!-- Luminaria Numero Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('luminaria_numero', __('models/iluminacaoPublicas.fields.luminaria_numero').':') !!}
+        {!! Form::number('luminaria_numero', null, ['class' => 'form-control']) !!}
+    </div>
+
+
+    <!-- Fase Ligacao Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('fase_ligacao', __('models/iluminacaoPublicas.fields.fase_ligacao').':') !!}
+        {!! Form::text('fase_ligacao', null, ['class' => 'form-control']) !!}
+    </div>
+
+
+    <!-- Altura Montagem Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('altura_montagem', __('models/iluminacaoPublicas.fields.altura_montagem').':') !!}
+        {!! Form::number('altura_montagem', null, ['class' => 'form-control']) !!}
+    </div>
+
+
+    <!-- Luminaria Data Instalacao Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('luminaria_data_instalacao', __('models/iluminacaoPublicas.fields.luminaria_data_instalacao').':') !!}
+        {!! Form::date('luminaria_data_instalacao', null, ['class' => 'form-control','id'=>'luminaria_data_instalacao']) !!}
+    </div>
+
+    @push('scripts')
+        <script type="text/javascript">
+            $('#luminaria_data_instalacao').datetimepicker({
+                format: 'YYYY-MM-DD HH:mm:ss',
+                useCurrent: false
+            })
+        </script>
+    @endpush
+
+
+<!-- Idlampada Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('idlampada', __('models/iluminacaoPublicas.fields.idlampada').':') !!}
+        {!! Form::select('idlampada', \App\Models\lampada::orderBy('lampada_descricao')->pluck('lampada_descricao', 'id'), null, ['class' => 'form-control']) !!}
+    </div>
+
+
+    <!-- Quantidade Lampada Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('quantidade_lampada', __('models/iluminacaoPublicas.fields.quantidade_lampada').':') !!}
+        {!! Form::number('quantidade_lampada', null, ['class' => 'form-control']) !!}
+    </div>
+
+    <!-- Horas Ligada Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('horas_ligada', __('models/iluminacaoPublicas.fields.horas_ligada').':') !!}
+        {!! Form::number('horas_ligada', null, ['class' => 'form-control']) !!}
+    </div>
+
+
+    <!-- Lampada Data Instalacao Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('lampada_data_instalacao', __('models/iluminacaoPublicas.fields.lampada_data_instalacao').':') !!}
+        {!! Form::date('lampada_data_instalacao', null, ['class' => 'form-control','id'=>'lampada_data_instalacao']) !!}
+    </div>
+
+    @push('scripts')
+        <script type="text/javascript">
+            $('#lampada_data_instalacao').datetimepicker({
+                format: 'YYYY-MM-DD HH:mm:ss',
+                useCurrent: false
+            })
+        </script>
+    @endpush
+
+    <div class="form-group col-sm-12">
+
+        <div style="display: flex; justify-content: space-between">
+            <a class="btn btn-default" onclick="$('#passo-2').css('display', 'none'); $('#passo-1').css('display', 'block')"><i class="fa fa-arrow-left"></i> Voltar</a>
+            <a class="btn btn-primary" onclick="$('#passo-2').css('display', 'none'); $('#passo-3').css('display', 'block')">Próximo <i class="fa fa-arrow-right"></i></a>
+        </div>
+
+    </div>
+</div>
+
+<div id="passo-3" style="display: none">
+        <div class="form-group col-sm-12">
+        <h3>Passo 3 de 4</h3>
+    </div>
+
+
+    <!-- Idreator Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('idreator', __('models/iluminacaoPublicas.fields.idreator').':') !!}
+        {!! Form::select('idreator', \App\Models\reator::orderBy('reator_descricao')->pluck('reator_descricao', 'id'), null, ['class' => 'form-control']) !!}
+    </div>
+
+
+    <!-- Reator Data Instalacao Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('reator_data_instalacao', __('models/iluminacaoPublicas.fields.reator_data_instalacao').':') !!}
+        {!! Form::date('reator_data_instalacao', null, ['class' => 'form-control','id'=>'reator_data_instalacao']) !!}
+    </div>
+
+
+    @push('scripts')
+        <script type="text/javascript">
+            $('#reator_data_instalacao').datetimepicker({
+                format: 'YYYY-MM-DD HH:mm:ss',
+                useCurrent: false
+            })
+        </script>
+    @endpush
+
+<!-- Idrele Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('idrele', __('models/iluminacaoPublicas.fields.idrele').':') !!}
+        {!! Form::select('idrele', \App\Models\rele::orderBy('rele_descricao')->pluck('rele_descricao', 'id'), null, ['class' => 'form-control']) !!}
+    </div>
+
+
+    <!-- Rele Data Instalacao Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('rele_data_instalacao', __('models/iluminacaoPublicas.fields.rele_data_instalacao').':') !!}
+        {!! Form::date('rele_data_instalacao', null, ['class' => 'form-control','id'=>'rele_data_instalacao']) !!}
+    </div>
+
+    @push('scripts')
+        <script type="text/javascript">
+            $('#rele_data_instalacao').datetimepicker({
+                format: 'YYYY-MM-DD HH:mm:ss',
+                useCurrent: false
+            })
+        </script>
+    @endpush
+
+
+<!-- Idrede Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('idrede', __('models/iluminacaoPublicas.fields.idrede').':') !!}
+        {!! Form::select('idrede', \App\Models\rede::orderBy('rede_descricao')->pluck('rede_descricao', 'id'), null, ['class' => 'form-control']) !!}
+    </div>
+
+
+    <!-- Idtransformador Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('idtransformador', __('models/iluminacaoPublicas.fields.idtransformador').':') !!}
+        {!! Form::select('idtransformador', \App\Models\transformador::orderBy('codigo')->pluck('codigo', 'id'), null, ['class' => 'form-control']) !!}
+    </div>
+
+
+    <!-- Idmedidor Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('idmedidor', __('models/iluminacaoPublicas.fields.idmedidor').':') !!}
+        {!! Form::select('idmedidor', \App\Models\medidor::orderBy('numero')->pluck('numero', 'id'), null, ['class' => 'form-control']) !!}
+    </div>
+
+
+    <!-- Medidor Data Instalacao Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('medidor_data_instalacao', __('models/iluminacaoPublicas.fields.medidor_data_instalacao').':') !!}
+        {!! Form::date('medidor_data_instalacao', null, ['class' => 'form-control','id'=>'medidor_data_instalacao']) !!}
+    </div>
+
+    @push('scripts')
+        <script type="text/javascript">
+            $('#medidor_data_instalacao').datetimepicker({
+                format: 'YYYY-MM-DD HH:mm:ss',
+                useCurrent: false
+            })
+        </script>
+    @endpush
+
+
+<!-- Idobjetoiluminado Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('idobjetoiluminado', __('models/iluminacaoPublicas.fields.idobjetoiluminado').':') !!}
+        {!! Form::select('idobjetoiluminado', \App\Models\objeto_iluminado::orderBy('objeto_iluminado_descricao')->pluck('objeto_iluminado_descricao', 'id'), null, ['class' => 'form-control']) !!}
+    </div>
+
+
+    <!-- Idtarifa Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('idtarifa', __('models/iluminacaoPublicas.fields.idtarifa').':') !!}
+        {!! Form::select('idtarifa', \App\Models\tarifa::orderBy('valor')->pluck('valor', 'id'), null, ['class' => 'form-control']) !!}
+    </div>
+
+
+    <!-- Observacoes Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('observacoes', __('models/iluminacaoPublicas.fields.observacoes').':') !!}
+        {!! Form::text('observacoes', null, ['class' => 'form-control']) !!}
+    </div>
+
+
+    <!-- Demanda W Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('demanda_w', __('models/iluminacaoPublicas.fields.demanda_w').':') !!}
+        {!! Form::number('demanda_w', null, ['class' => 'form-control']) !!}
+    </div>
+
+    <div class="form-group col-sm-12">
+
+        <div style="display: flex; justify-content: space-between">
+            <a class="btn btn-default" onclick="$('#passo-3').css('display', 'none'); $('#passo-2').css('display', 'block')"><i class="fa fa-arrow-left"></i> Voltar</a>
+            <a class="btn btn-primary" onclick="$('#passo-3').css('display', 'none'); $('#passo-4').css('display', 'block')">Próximo <i class="fa fa-arrow-right"></i></a>
+        </div>
+
+    </div>
+</div>
+
+<div id="passo-4" style="display: none">
+    <div class="form-group col-sm-12">
+        <h3>Passo 4 de 4</h3>
+    </div>
+
+    <!-- Consumo Kwh Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('consumo_kwh', __('models/iluminacaoPublicas.fields.consumo_kwh').':') !!}
+        {!! Form::number('consumo_kwh', null, ['class' => 'form-control']) !!}
+    </div>
+
+
+    <!-- Quantidade Os Pendente Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('quantidade_os_pendente', __('models/iluminacaoPublicas.fields.quantidade_os_pendente').':') !!}
+        {!! Form::number('quantidade_os_pendente', null, ['class' => 'form-control']) !!}
+    </div>
+
+
+    <!-- Quantidade Os Executada Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('quantidade_os_executada', __('models/iluminacaoPublicas.fields.quantidade_os_executada').':') !!}
+        {!! Form::number('quantidade_os_executada', null, ['class' => 'form-control']) !!}
+    </div>
+
+
+    <!-- Quantidade Os Cancelada Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('quantidade_os_cancelada', __('models/iluminacaoPublicas.fields.quantidade_os_cancelada').':') !!}
+        {!! Form::number('quantidade_os_cancelada', null, ['class' => 'form-control']) !!}
+    </div>
+
+
+    <!-- Quantidade Os Normalizada Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('quantidade_os_normalizada', __('models/iluminacaoPublicas.fields.quantidade_os_normalizada').':') !!}
+        {!! Form::number('quantidade_os_normalizada', null, ['class' => 'form-control']) !!}
+    </div>
+
+
+    <!-- Icone Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('icone', __('models/iluminacaoPublicas.fields.icone').':') !!}
+        {!! Form::text('icone', null, ['class' => 'form-control']) !!}
+    </div>
+
+
+    <!-- Incluidoem Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('incluidoem', __('models/iluminacaoPublicas.fields.incluidoem').':') !!}
+        {!! Form::date('incluidoem', null, ['class' => 'form-control','id'=>'incluidoem']) !!}
+    </div>
+
+    @push('scripts')
+        <script type="text/javascript">
+            $('#incluidoem').datetimepicker({
+                format: 'YYYY-MM-DD HH:mm:ss',
+                useCurrent: false
+            })
+        </script>
+    @endpush
+
+
+<!-- Idusuarioi Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('idusuarioi', __('models/iluminacaoPublicas.fields.idusuarioi').':') !!}
+        {!! Form::select('idusuarioi', \App\Models\usuario::orderBy('nome')->pluck('nome', 'id'), null, ['class' => 'form-control']) !!}
+    </div>
+
+
+    <!-- Alteradoem Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('alteradoem', __('models/iluminacaoPublicas.fields.alteradoem').':') !!}
+        {!! Form::date('alteradoem', null, ['class' => 'form-control','id'=>'alteradoem']) !!}
+    </div>
+
+    @push('scripts')
+        <script type="text/javascript">
+            $('#alteradoem').datetimepicker({
+                format: 'YYYY-MM-DD HH:mm:ss',
+                useCurrent: false
+            })
+        </script>
+@endpush
+
+
+<!-- Idusuario Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('idusuario', __('models/iluminacaoPublicas.fields.idusuario').':') !!}
+        {!! Form::select('idusuario', \App\Models\usuario::orderBy('nome')->pluck('nome', 'id'), null, ['class' => 'form-control']) !!}
+    </div>
+
+
+    <!-- Cadastro Manual Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('cadastro_manual', __('models/iluminacaoPublicas.fields.cadastro_manual').':') !!}
+        {!! Form::number('cadastro_manual', null, ['class' => 'form-control']) !!}
+    </div>
+
+
+    <!-- Iddigitacao Cadastro Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('iddigitacao_cadastro', __('models/iluminacaoPublicas.fields.iddigitacao_cadastro').':') !!}
+        {!! Form::select('iddigitacao_cadastro', \App\Models\Digitacao_cadastros::orderBy('id')->pluck('id', 'id'), null, ['class' => 'form-control']) !!}
+    </div>
+
+    <div class="form-group col-sm-12">
+
+        <div style="display: flex; justify-content: space-between">
+            <a class="btn btn-default" onclick="$('#passo-4').css('display', 'none'); $('#passo-3').css('display', 'block')"><i class="fa fa-arrow-left"></i> Voltar</a>
+            {!! Form::submit(__('crud.save'), ['class' => 'btn btn-success']) !!}
+
+        </div>
+
+    </div>
+</div>

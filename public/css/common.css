@@ -1,0 +1,8 @@
+.sidebar-menu,
+.main-sidebar .user-panel,
+.sidebar-menu > li.header {
+    white-space: normal!important;
+}
+#dataTableBuilder > tbody > tr > td {
+    min-width: 70px;
+}
