@@ -90,6 +90,23 @@ Request::is('iluminacaoPublicas*') ? 'active' : '' }} treeview">
     </a>
     </ul>
 </li>
+<li class="{{ Request::is('avaliacoes*') ? 'active' : '' }} treeview">
+    <a href="#">
+        <i class="fa fa-file-pdf-o"></i>
+        <span>Cronograma Avaliações e Reavaliações</span>
+        <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+        </span>
+    </a>
+    <ul class="treeview-menu">
+        <li class="{{ Request::is('avaliacoes*') ? 'active' : '' }}">
+            <a href="{{ url('avaliacoes') }}">
+                <i class="fa fa-eye"></i>
+                <span>Avaliações</span>
+            </a>
+        </li>
+    </ul>
+</li>
 
 <!-- <li class="{{ Request::is('faturaManutencaos*') ||
 Request::is('faturaManutencaos*') ||

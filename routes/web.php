@@ -68,6 +68,23 @@ Route::get('avaliacaoTerapeutica/edit/{id}', 'EvalReportController@edit')->middl
 Route::get('avaliacaoTerapeutica', 'EvalReportController@index')->middleware('verified');
 
 
+
+Route::get('avaliacoes', 'AvaliacoesController@index')->middleware('verified');
+
+Route::get('avaliacoes/create', 'AvaliacoesController@create')->middleware('verified');
+
+Route::post('avaliacoes/insert', 'AvaliacoesController@insert')->middleware('verified');
+
+Route::post('avaliacoes/delete', 'AvaliacoesController@delete')->middleware('verified');
+
+Route::get('avaliacoes/view/{id}', 'AvaliacoesController@read')->middleware('verified');
+
+Route::get('avaliacoes/edit/{id}', 'AvaliacoesController@edit')->middleware('verified');
+
+Route::post('avaliacoes/update', 'AvaliacoesController@update')->middleware('verified');
+
+
+
 Route::resource('cidades', 'cidadeController')->middleware('verified');
 
 Route::resource('usuarioCidades', 'usuarioCidadeController')->middleware('verified');

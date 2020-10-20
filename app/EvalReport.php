@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\DB;
 
 class EvalReport extends Model {
 	
+	public function fetch() {
+		return DB::table('eval_report')->get()->toArray();
+	}
+
 	public function update_record($data) {
 		DB::table('eval_report')->where('id', $data['id'])->update($data);
 	}
