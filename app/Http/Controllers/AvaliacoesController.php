@@ -44,7 +44,7 @@ class AvaliacoesController extends Controller {
 		$result_array = array();
 
 		foreach ($result as $key => $value) {
-			if (!$value->in_table) {
+			if (!$value->in_avaliacoes) {
 				$result_array[$key]['id'] = $value->id;
 				$result_array[$key]['nome'] = $value->name_patient;
 			}
@@ -64,7 +64,7 @@ class AvaliacoesController extends Controller {
 										->get()->toArray();
 		$name = $name[0]->name_patient;
 		$data['nome'] = $name;
-		DB::table('eval_report')->where('id', $id)->update(['in_table' => '1']);
+		DB::table('eval_report')->where('id', $id)->update(['in_avaliacoes' => '1']);
 		$avaliacoes = new Avaliacoes();
 		$avaliacoes->insert_record($data);
 
@@ -77,7 +77,7 @@ class AvaliacoesController extends Controller {
 		$id = $data['delete_patient_id'];
 		$avaliacoes = new Avaliacoes();
 		$avaliacoes->delete_record($request);
-		DB::table('eval_report')->where('id', $id)->update(['in_table' => '0']);
+		DB::table('eval_report')->where('id', $id)->update(['in_avaliacoes' => '0']);
 
 		return redirect('avaliacoes');
 	}

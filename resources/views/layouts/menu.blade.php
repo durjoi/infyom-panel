@@ -90,10 +90,11 @@ Request::is('iluminacaoPublicas*') ? 'active' : '' }} treeview">
     </a>
     </ul>
 </li>
-<li class="{{ Request::is('avaliacoes*') ? 'active' : '' }} treeview">
+
+<li class="{{ Request::is('avaliacoes*') || Request::is('power_breath*') || Request::is('dourado*') ? 'active' : '' }} treeview">
     <a href="#">
         <i class="fa fa-file-pdf-o"></i>
-        <span>Cronograma Avaliações e Reavaliações</span>
+        <span>Avaliações</span>
         <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
         </span>
@@ -102,7 +103,19 @@ Request::is('iluminacaoPublicas*') ? 'active' : '' }} treeview">
         <li class="{{ Request::is('avaliacoes*') ? 'active' : '' }}">
             <a href="{{ url('avaliacoes') }}">
                 <i class="fa fa-eye"></i>
-                <span>Avaliações</span>
+                <span>Cronograma Avaliações e Reavaliações</span>
+            </a>
+        </li>
+        <li class="{{ Request::is('power_breath*') ? 'active' : '' }}">
+            <a href="{{ url('power_breath') }}">
+                <i class="fa fa-eye"></i>
+                <span>Valores de Referência Power Breath</span>
+            </a>
+        </li>
+        <li class="{{ Request::is('dourado*') ? 'active' : '' }}">
+            <a href="{{ url('dourado') }}">
+                <i class="fa fa-eye"></i>
+                <span>Valor predito do teste de caminhada pela equação de DOURADO</span>
             </a>
         </li>
     </ul>

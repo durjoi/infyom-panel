@@ -63,6 +63,10 @@ class EvalReportController extends Controller {
 	public function update(Request $request) {
 		$data = $request->all();
 		array_shift($data);
+		$name = $data['name_patient'];
+		$id = $data['id'];
+		DB::table('avaliacoes')->where('patient_id', $id)->update(['nome' => $name]);
+		DB::table('dourado')->where('patient_id', $id)->update(['nome' => $name]);
 		$eval_report = new EvalReport();
 		$eval_report->update_record($data);
 		return redirect('avaliacaoTerapeutica');

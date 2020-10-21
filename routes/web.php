@@ -85,6 +85,38 @@ Route::post('avaliacoes/update', 'AvaliacoesController@update')->middleware('ver
 
 
 
+Route::get('power_breath', 'PowerBreathController@index')->middleware('verified');
+
+Route::get('power_breath/create', 'PowerBreathController@create')->middleware('verified');
+
+Route::post('power_breath/insert', 'PowerBreathController@insert')->middleware('verified');
+
+Route::post('power_breath/delete', 'PowerBreathController@delete')->middleware('verified');
+
+Route::get('power_breath/view/{id}', 'PowerBreathController@read')->middleware('verified');
+
+Route::get('power_breath/edit/{id}', 'PowerBreathController@edit')->middleware('verified');
+
+Route::post('power_breath/update', 'PowerBreathController@update')->middleware('verified');
+
+
+
+Route::get('dourado', 'DouradoController@index')->middleware('verified');
+
+Route::get('dourado/create', 'DouradoController@create')->middleware('verified');
+
+Route::post('dourado/insert', 'DouradoController@insert')->middleware('verified');
+
+Route::post('dourado/delete', 'DouradoController@delete')->middleware('verified');
+
+Route::get('dourado/view/{id}', 'DouradoController@read')->middleware('verified');
+
+Route::get('dourado/edit/{id}', 'DouradoController@edit')->middleware('verified');
+
+Route::post('dourado/update', 'DouradoController@update')->middleware('verified');
+
+
+
 Route::resource('cidades', 'cidadeController')->middleware('verified');
 
 Route::resource('usuarioCidades', 'usuarioCidadeController')->middleware('verified');
