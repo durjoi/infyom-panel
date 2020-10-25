@@ -126,30 +126,52 @@ class HomeController extends Controller
         $month = date('Y-m');
 
         $this_month = DB::select("SELECT COUNT(*) AS 'all' FROM eval_report WHERE assessment_date_and_time LIKE '%$month%'");
-        $this_month = $this_month[0]->all;
+        
+        if($this_month) {
+            $this_month = $this_month[0]->all;
+            $data['this_month'] = $this_month;
+        } else {
+            $data['this_month'] = 0;
+        }
 
         $result = DB::select("SELECT DISTINCT(DATE_FORMAT(assessment_date_and_time, '%Y-%m')) AS 'date' FROM eval_report ORDER BY assessment_date_and_time");
 
         foreach ($result as $key => $value) {
-
             $dates[$key] = $value->date;
-
             $res = DB::select("SELECT COUNT(assessment_date_and_time) AS 'total' FROM eval_report WHERE assessment_date_and_time LIKE '%$value->date%'");
             $counts[$key] = $res[0]->total;
-
         }
-        $data['dates'] = json_encode($dates);
-        $data['counts'] = json_encode($counts);
+
+        if($dates) {
+            $data['dates'] = json_encode($dates);
+        } else {
+            $data['dates'] = 0;
+        }
+
+        if($counts) {
+            $data['counts'] = json_encode($counts);
+        } else {
+            $data['counts'] = 0;
+        }
 
         $count_doctors = DB::select("SELECT COUNT(DISTINCT(responsible_pulsar_professional)) AS 'count' FROM eval_report");
-        $count_doctors = $count_doctors[0]->count;
+        
+        if($count_doctors) {
+            $count_doctors = $count_doctors[0]->count;
+            $data['count_doctors'] = $count_doctors;
+        } else {
+            $data['count_doctors'] = 0;
+        }
 
         $one_way = DB::select("SELECT COUNT(*) AS 'count' FROM avaliacoes WHERE times_visited <= 1 OR times_visited IS NULL");
-        $one_way = $one_way[0]->count;
 
-        $data['count_doctors'] = $count_doctors;
-        $data['this_month'] = $this_month;
-        $data['one_way'] = $one_way;
+        if($one_way) {
+            $one_way = $one_way[0]->count;
+            $data['one_way'] = $one_way;
+        } else {
+            $data['one_way'] = 0;
+        }
+
 
         return view('homepage', $data);
     }
