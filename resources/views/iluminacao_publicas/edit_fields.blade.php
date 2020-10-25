@@ -22,7 +22,7 @@
 
   <div class="form-group col-sm-6">
     <label>DATA DE NASCIMENTO</label>
-    <input type="text" class="form-control" name="date_of_birth" value="{{ $result[0]->date_of_birth }}" >
+    <input type="date" class="form-control" name="date_of_birth" value="{{ $result[0]->date_of_birth }}" >
   </div>
 
   <div class="form-group col-sm-6">
@@ -32,7 +32,7 @@
 
   <div class="form-group col-sm-6">
     <label>DATA E HORARIO DA AVALIAÇÃO</label>
-    <input type="text" class="form-control" name="assessment_date_and_time" value="{{ $result[0]->assessment_date_and_time }}" >
+    <input type="datetime-local" class="form-control" name="assessment_date_and_time" value="{{ $result[0]->assessment_date_and_time }}" >
   </div>
 
   <div class="form-group col-sm-6">

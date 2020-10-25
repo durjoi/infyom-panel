@@ -84,4 +84,56 @@ class HomeController extends Controller
         return json_encode($pontosMapa);
     }
 
+    public function homepage() {
+
+        $physio_therapy = DB::select("SELECT COUNT(physio_therapy) AS 'physio_therapy' FROM eval_report");
+        $physio_therapy = $physio_therapy[0]->physio_therapy;
+
+        $cardio = DB::select("SELECT COUNT(*) AS 'cardio' FROM eval_report WHERE physio_therapy LIKE '%cardio%'");
+        $cardio = $cardio[0]->cardio;
+        $data['cardio'] = ($cardio / $physio_therapy) * 100;
+
+        $respira = DB::select("SELECT COUNT(*) AS 'respira' FROM eval_report WHERE physio_therapy LIKE '%respira%'");
+        $respira = $respira[0]->respira;
+        $data['respira'] = ($respira / $physio_therapy) * 100;
+
+        $neuro = DB::select("SELECT COUNT(*) AS 'neuro' FROM eval_report WHERE physio_therapy LIKE '%neuro%'");
+        $neuro = $neuro[0]->neuro;
+        $data['neuro'] = ($neuro / $physio_therapy) * 100;
+
+        $cognitiva = DB::select("SELECT COUNT(*) AS 'cognitiva' FROM eval_report WHERE physio_therapy LIKE '%cognitiva%'");
+        $cognitiva = $cognitiva[0]->cognitiva;
+        $data['cognitiva'] = ($cognitiva / $physio_therapy) * 100;
+
+        $month = date('Y-m');
+
+        $this_month = DB::select("SELECT COUNT(*) AS 'all' FROM eval_report WHERE assessment_date_and_time LIKE '%$month%'");
+        $this_month = $this_month[0]->all;
+
+        $result = DB::select("SELECT DISTINCT(DATE_FORMAT(assessment_date_and_time, '%Y-%m')) AS 'date' FROM eval_report ORDER BY assessment_date_and_time");
+
+        foreach ($result as $key => $value) {
+
+            $dates[$key] = $value->date;
+
+            $res = DB::select("SELECT COUNT(assessment_date_and_time) AS 'total' FROM eval_report WHERE assessment_date_and_time LIKE '%$value->date%'");
+            $counts[$key] = $res[0]->total;
+
+        }
+        $data['dates'] = json_encode($dates);
+        $data['counts'] = json_encode($counts);
+
+        $count_doctors = DB::select("SELECT COUNT(DISTINCT(responsible_pulsar_professional)) AS 'count' FROM eval_report");
+        $count_doctors = $count_doctors[0]->count;
+
+        $one_way = DB::select("SELECT COUNT(*) AS 'count' FROM avaliacoes WHERE times_visited <= 1 OR times_visited IS NULL");
+        $one_way = $one_way[0]->count;
+
+        $data['count_doctors'] = $count_doctors;
+        $data['this_month'] = $this_month;
+        $data['one_way'] = $one_way;
+
+        return view('homepage', $data);
+    }
+
 }

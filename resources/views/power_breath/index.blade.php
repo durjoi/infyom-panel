@@ -5,15 +5,15 @@
 		<br>
 		<br>
 		<h1 class="pull-left">
-			Valor predito do teste de caminhada pela equação de DOURADO
+			Valores de Referência Power Breath
 		</h1>
 		<h1 class="pull-right">
-           <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{{ url('dourado/create') }}">Nova Entrada</a>
+           <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{{ url('power_breath/create') }}">Nova Entrada</a>
         </h1>
 	</section>
 	<br>
 	<br>
-	<form class="form-horizontal" method="POST" action="{{url('dourado/delete')}}" id="delete_record_form" enctype="multipart/form-data">
+	<form class="form-horizontal" method="POST" action="{{url('power_breath/delete')}}" id="delete_record_form" enctype="multipart/form-data">
 		{{ csrf_field() }}
 		<div id="deleteRecordModal" class="modal fade" role="dialog">
 			<div class="modal-dialog">
@@ -48,16 +48,11 @@
 				<table id="eval_table" class="table table-striped table-bordered" style="width:100%">
 					<thead>
 						<tr>
-							<th>Nome</th>
-							<th>Idade</th>
-							<th>Peso</th>
-							<th>Altura(m)</th>
-							<th>Gênero(mulher: 0; homem: 1)</th>
-							<th>Distância predita</th>
-							<th>Distância obtida no teste</th>
-							<th>Percentual do predito</th>
-							<th>Velocidade média do teste(m/min)</th>
-							<th>Velocidade média(km/h)</th>
+							<th>NOME</th>
+							<th>IDADE</th>
+							<th>PESO</th>
+							<th>ALTURA</th>
+							<th>GÊNERO</th>
 							<th style="width: 15%; text-align: center;">OPCIONES</th>
 						</tr>
 					</thead>
@@ -69,19 +64,14 @@
 								<td>{{ $value['peso'] }}</td>
 								<td>{{ $value['altura'] }}</td>
 								<td>{{ $value['genero'] }}</td>
-								<td>{{ $value['distancia_predita'] }}</td>
-								<td>{{ $value['distancia_obtida_no_teste'] }}</td>
-								<td>{{ $value['percentual_do_predito'] }}</td>
-								<td>{{ $value['velocidade_media_do_teste'] }}</td>
-								<td>{{ $value['velocidade_media'] }}</td>
 								<td style="text-align: center;">
-									<a href="{{ url('dourado/view/'.$value['id']) }}" class="btn btn-success" name="record_view" id="record_view">
+									<a href="{{ url('power_breath/view/'.$value['id']) }}" class="btn btn-success" name="record_view" id="record_view">
 										<i class="fa fa-eye"></i>
 									</a>
-									<a href="{{ url('dourado/edit/'.$value['id']) }}" class="btn btn-primary" name="record_edit" id="record_edit">
+									<a href="{{ url('power_breath/edit/'.$value['id']) }}" class="btn btn-primary" name="record_edit" id="record_edit">
 										<i class="fa fa-pencil"></i>
 									</a>
-									<a class="btn btn-danger" name="record_delete" id="record_delete" patient_id="{{ $value['patient_id'] }}" delete_id="{{ $value['id'] }}">
+									<a class="btn btn-danger" name="record_delete" id="record_delete" patient_id="{{ $value['patient_id'] ?? '' }}" delete_id="{{ $value['id'] }}">
 										<i class="fa fa-trash"></i>
 									</a>
 								</td>

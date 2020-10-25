@@ -25,7 +25,7 @@
 
 	<div class="form-group col-sm-6">
 		<label for="relatorio">RELATORIO</label>
-		<input type="text" class="form-control" name="relatorio" id="relatorio">
+		<input type="date" class="form-control" name="relatorio" id="relatorio">
 	</div>
 
 	<div class="form-group col-sm-6">

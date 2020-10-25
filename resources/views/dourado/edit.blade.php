@@ -2,7 +2,7 @@
 
 @section('content')
 	<section class="content-header">
-		<h1>Avaliação Terapêutica</h1>
+		<h1>Valor predito do teste de caminhada pela equação de DOURADO</h1>
 		<br>
 	</section>
 	<div class="content">

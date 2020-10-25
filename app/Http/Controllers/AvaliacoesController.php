@@ -44,10 +44,8 @@ class AvaliacoesController extends Controller {
 		$result_array = array();
 
 		foreach ($result as $key => $value) {
-			if (!$value->in_avaliacoes) {
-				$result_array[$key]['id'] = $value->id;
-				$result_array[$key]['nome'] = $value->name_patient;
-			}
+			$result_array[$key]['id'] = $value->id;
+			$result_array[$key]['nome'] = $value->name_patient;
 		}
 		$data['result'] = $result_array;
 
@@ -56,17 +54,44 @@ class AvaliacoesController extends Controller {
 
 	public function insert(Request $request) {
 		$data = $request->all();
-		array_shift($data);
 		$id = $data['nome'];
-		$data['patient_id'] = $id;
-		$name = DB::table('eval_report')->select('name_patient')
-										->where('id', $id)
-										->get()->toArray();
-		$name = $name[0]->name_patient;
-		$data['nome'] = $name;
-		DB::table('eval_report')->where('id', $id)->update(['in_avaliacoes' => '1']);
-		$avaliacoes = new Avaliacoes();
-		$avaliacoes->insert_record($data);
+		array_shift($data);
+		$result = DB::table('avaliacoes')->where('patient_id', $data['nome'])->get()->toArray();
+			// echo "<pre>"; print_r($result); die;
+		if($result){
+			$times_visited = $result[0]->times_visited;
+		} else {
+			$times_visited = null;
+		}
+
+		if($times_visited){
+			$total = DB::table('avaliacoes')->where('patient_id', $data['nome'])->get('times_visited')->toArray();
+			$total = $total[0]->times_visited;
+			if($total < 6) {
+				$times_visited++;
+				DB::table('avaliacoes')->where('patient_id', $id)->update([
+					'avaliacao_'.($times_visited-1) => $data['avaliacao'],
+					'data_'.($times_visited-1) => $data['data'],
+					'profissional_'.($times_visited-1) => $data['profissional'],
+					'relatorio_'.($times_visited-1) => $data['relatorio'],
+					'enviado_res_'.($times_visited-1) => $data['enviado_res'],
+					'times_visited' => $times_visited
+				]);
+			}
+		} else {
+			$times_visited = 1;
+			// echo "<pre>"; print_r($times_visited); die;
+			$id = $data['nome'];
+			$data['patient_id'] = $id;
+			$name = DB::table('eval_report')->select('name_patient')
+											->where('id', $id)
+											->get()->toArray();
+			$name = $name[0]->name_patient;
+			$data['nome'] = $name;
+			$avaliacoes = new Avaliacoes();
+			$avaliacoes->insert_record($data);
+			DB::table('avaliacoes')->where('patient_id', $id)->update(['times_visited' => $times_visited]);
+		}
 
 		return redirect('avaliacoes');
 	}
@@ -77,7 +102,6 @@ class AvaliacoesController extends Controller {
 		$id = $data['delete_patient_id'];
 		$avaliacoes = new Avaliacoes();
 		$avaliacoes->delete_record($request);
-		DB::table('eval_report')->where('id', $id)->update(['in_avaliacoes' => '0']);
 
 		return redirect('avaliacoes');
 	}

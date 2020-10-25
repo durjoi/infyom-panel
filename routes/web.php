@@ -55,6 +55,10 @@ Route::post(
     '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@generateFromFile'
 )->name('io_generator_builder_generate_from_file');
 
+
+Route::get('homepage', 'HomeController@homepage')->middleware('verified');
+
+
 Route::post('submitEvalReport', 'EvalReportController@insert')->middleware('verified');
 
 Route::post('updateEvalReport', 'EvalReportController@update')->middleware('verified');

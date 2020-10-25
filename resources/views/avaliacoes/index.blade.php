@@ -5,7 +5,7 @@
 		<br>
 		<br>
 		<h1 class="pull-left">
-			Avaliações
+			Cronograma Avaliações e Reavaliações
 		</h1>
 		<h1 class="pull-right">
            <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{{ url('avaliacoes/create') }}">Nova Entrada</a>

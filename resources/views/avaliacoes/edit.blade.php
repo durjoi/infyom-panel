@@ -2,7 +2,7 @@
 
 @section('content')
 	<section class="content-header">
-		<h1>Avaliação Terapêutica</h1>
+		<h1>Cronograma Avaliações e Reavaliações</h1>
 		<br>
 	</section>
 	<div class="content">
