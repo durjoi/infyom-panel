@@ -86,12 +86,14 @@ class HomeController extends Controller
 
     public function homepage() {
 
+        $data = array();
+
         $physio_therapy = DB::select("SELECT COUNT(physio_therapy) AS 'physio_therapy' FROM eval_report");
         $physio_therapy = $physio_therapy[0]->physio_therapy;
 
         $cardio = DB::select("SELECT COUNT(*) AS 'cardio' FROM eval_report WHERE physio_therapy LIKE '%cardio%'");
         $cardio = $cardio[0]->cardio;
-        if ($data['cardio']) {
+        if ($cardio) {
             $data['cardio'] = ($cardio / $physio_therapy) * 100;
         } else {
             $data['cardio'] = 0;
@@ -99,7 +101,7 @@ class HomeController extends Controller
 
         $respira = DB::select("SELECT COUNT(*) AS 'respira' FROM eval_report WHERE physio_therapy LIKE '%respira%'");
         $respira = $respira[0]->respira;
-        if ($data['respira']) {
+        if ($respira) {
             $data['respira'] = ($respira / $physio_therapy) * 100;
         } else {
             $data['respira'] = 0;
@@ -107,7 +109,7 @@ class HomeController extends Controller
 
         $neuro = DB::select("SELECT COUNT(*) AS 'neuro' FROM eval_report WHERE physio_therapy LIKE '%neuro%'");
         $neuro = $neuro[0]->neuro;
-        if ($data['neuro']) {
+        if ($neuro) {
             $data['neuro'] = ($neuro / $physio_therapy) * 100;
         } else {
             $data['neuro'] = 0;
@@ -115,7 +117,7 @@ class HomeController extends Controller
 
         $cognitiva = DB::select("SELECT COUNT(*) AS 'cognitiva' FROM eval_report WHERE physio_therapy LIKE '%cognitiva%'");
         $cognitiva = $cognitiva[0]->cognitiva;
-        if ($data['cognitiva']) {
+        if ($cognitiva) {
             $data['cognitiva'] = ($cognitiva / $physio_therapy) * 100;
         } else {
             $data['cognitiva'] = 0;
