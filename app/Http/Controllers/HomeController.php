@@ -91,19 +91,35 @@ class HomeController extends Controller
 
         $cardio = DB::select("SELECT COUNT(*) AS 'cardio' FROM eval_report WHERE physio_therapy LIKE '%cardio%'");
         $cardio = $cardio[0]->cardio;
-        $data['cardio'] = ($cardio / $physio_therapy) * 100;
+        if ($data['cardio']) {
+            $data['cardio'] = ($cardio / $physio_therapy) * 100;
+        } else {
+            $data['cardio'] = 0;
+        }
 
         $respira = DB::select("SELECT COUNT(*) AS 'respira' FROM eval_report WHERE physio_therapy LIKE '%respira%'");
         $respira = $respira[0]->respira;
-        $data['respira'] = ($respira / $physio_therapy) * 100;
+        if ($data['respira']) {
+            $data['respira'] = ($respira / $physio_therapy) * 100;
+        } else {
+            $data['respira'] = 0;
+        }
 
         $neuro = DB::select("SELECT COUNT(*) AS 'neuro' FROM eval_report WHERE physio_therapy LIKE '%neuro%'");
         $neuro = $neuro[0]->neuro;
-        $data['neuro'] = ($neuro / $physio_therapy) * 100;
+        if ($data['neuro']) {
+            $data['neuro'] = ($neuro / $physio_therapy) * 100;
+        } else {
+            $data['neuro'] = 0;
+        }
 
         $cognitiva = DB::select("SELECT COUNT(*) AS 'cognitiva' FROM eval_report WHERE physio_therapy LIKE '%cognitiva%'");
         $cognitiva = $cognitiva[0]->cognitiva;
-        $data['cognitiva'] = ($cognitiva / $physio_therapy) * 100;
+        if ($data['cognitiva']) {
+            $data['cognitiva'] = ($cognitiva / $physio_therapy) * 100;
+        } else {
+            $data['cognitiva'] = 0;
+        }
 
         $month = date('Y-m');
 
