@@ -88,6 +88,7 @@ class HomeController extends Controller
 
         $data = array();
         $dates = array();
+        $counts = array();
 
         $physio_therapy = DB::select("SELECT COUNT(physio_therapy) AS 'physio_therapy' FROM eval_report");
         $physio_therapy = $physio_therapy[0]->physio_therapy;
