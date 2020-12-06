@@ -20,7 +20,7 @@
 				<div class="modal-content" style="margin-top:20%;">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title" id="">¿Está seguro de que desea eliminar este registro?</h4>
+						<h4 class="modal-title" id="">Tem certeza que deseja deletar este registro?</h4>
 						<input type="hidden" name="delete_record_id" id="delete_record_id">
 					</div>
 					<div class="modal-footer">
