@@ -25,8 +25,8 @@
 						<input type="hidden" name="delete_patient_id" id="delete_patient_id">
 					</div>
 					<div class="modal-footer">
-						<button type="submit" class="btn btn-danger" name="confirm_delete" id="confirm_delete">Si</button> 
-						<button class="btn btn-success" data-dismiss="modal">No</button>
+						<button type="submit" class="btn btn-danger" name="confirm_delete" id="confirm_delete">Sim</button> 
+						<button class="btn btn-success" data-dismiss="modal">Não</button>
 					</div>
 				</div>
 			</div>
