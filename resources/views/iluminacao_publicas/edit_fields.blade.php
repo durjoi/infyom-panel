@@ -27,7 +27,12 @@
 
   <div class="form-group col-sm-6">
     <label>SEXO</label>
-    <input type="text" class="form-control" name="sex" value="{{ $result[0]->sex }}" >
+    <br>
+    Masculino
+    <input type="radio" name="sex" value="Masculino" {{$result[0]->sex == "Masculino" ? "checked" : ""}}> 
+    Feminino
+    <input type="radio" name="sex" value="Feminino" {{$result[0]->sex == "Feminino" ? "checked" : ""}} >
+
   </div>
 
   <div class="form-group col-sm-6">

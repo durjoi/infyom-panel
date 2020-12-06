@@ -26,7 +26,11 @@
 
 	<div class="form-group col-sm-6">
 		<label>SEXO</label>
-		<input type="text" class="form-control" name="sex">
+		<br>
+		Masculino
+		<input type="radio" name="sex" value="Masculino"> 
+		Feminino
+		<input type="radio" name="sex" value="Feminino">
 	</div>
 
 	<div class="form-group col-sm-6">
