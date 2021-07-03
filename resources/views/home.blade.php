@@ -101,7 +101,7 @@
                 </div>
             </div>
 
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-md-12">
                     <div class="nav-tabs-custom">
                         <ul class="nav nav-tabs pull-right">
@@ -139,7 +139,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     @else
         {{ route('login') }}

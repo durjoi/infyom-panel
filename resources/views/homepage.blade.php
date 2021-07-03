@@ -12,7 +12,7 @@
 				Painel de Controle
 				<small>Versão 1.0</small>
 			</h1>
-			{{ Breadcrumbs::render('home', 'Blog') }}
+			<!-- {{ Breadcrumbs::render('home', 'Blog') }} -->
 		</div>
 		<br>
 		<div class="container" style="width: 100%">

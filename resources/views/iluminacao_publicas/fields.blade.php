@@ -15,14 +15,29 @@
 	</div>
 
 	<div class="form-group col-sm-6">
-		<label>IDADE</label>
-		<input type="text" class="form-control" name="age">
+		<label>DATA DE NASCIMENTO</label>
+		<input type="date" class="form-control" name="date_of_birth" id="date_of_birth" onfocusout="myFunction()">
 	</div>
 
 	<div class="form-group col-sm-6">
-		<label>DATA DE NASCIMENTO</label>
-		<input type="date" class="form-control" name="date_of_birth">
+		<label>IDADE</label>
+		<input type="text" class="form-control" name="age" id="age" readonly>
 	</div>
+
+	<script type="text/javascript">
+		function myFunction() {
+			dob = new Date(document.getElementById("date_of_birth").value)
+			dob = dob.getFullYear()
+			var age = "";
+			var today = new Date();
+			age = today.getFullYear() - dob;
+			if (!isNaN(age)) {
+				$('#age').val(age);
+			} else {
+				$('#age').val("");
+			}
+		}
+	</script>
 
 	<div class="form-group col-sm-6">
 		<label>SEXO</label>
